@@ -1,0 +1,20 @@
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+
+# بارگذاری توکنایزر و مدل
+tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased")inputs = tokenizer("Hello, my name is ChatGPT", return_tensors="pt")with torch.no_grad():
+    outputs = model(**inputs)
+
+print(outputs)
+https://colab.research.google.com/drive/14XR4M5jnIwJAehbd0SRFuFHzWyIozyI1#scrollTo=CNgd-q5RcdBO
+from transformers import pipeline
+
+# بارگذاری مدل برای دسته‌بندی متن
+classifier = pipeline('sentiment-analysis')
+
+# تست مدل با یک جمله
+result = classifier("I love using Hugging Face models!")
+
+# نمایش نتیجه
+print(result)
